@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Communities - MySpace 2.0</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #090014;
+            color: white;
+        }
+
+        /* NAVBAR */
+        nav {
+            height: 70px;
+            padding: 0 6%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #10001f;
+            border-bottom: 1px solid #32104f;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #e879f9;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: #ddd;
+            text-decoration: none;
+        }
+
+        .nav-links a:hover {
+            color: #e879f9;
+        }
+
+        .profile-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #9333ea, #ec4899);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+        }
+
+        /* MAIN */
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 35px auto;
+        }
+
+        .hero {
+            padding: 35px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, #301052, #4a103e);
+            border: 1px solid #6b21a8;
+            margin-bottom: 30px;
+        }
+
+        .hero h1 {
+            font-size: 34px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            color: #d8b4fe;
+            line-height: 1.6;
+        }
+
+        /* SEARCH */
+        .search {
+            width: 100%;
+            margin-top: 20px;
+            padding: 14px 20px;
+            border-radius: 25px;
+            border: 1px solid #6b21a8;
+            background: #180526;
+            color: white;
+            outline: none;
+        }
+
+        /* GRID */
+        .community-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .community {
+            background: #12001f;
+            border: 1px solid #35104f;
+            border-radius: 18px;
+            padding: 25px;
+        }
+
+        .community-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 18px;
+            background: linear-gradient(135deg, #7e22ce, #ec4899);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            margin-bottom: 18px;
+        }
+
+        .community h2 {
+            margin-bottom: 8px;
+        }
+
+        .community p {
+            color: #aaa;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .members {
+            color: #a78bfa;
+            font-size: 13px;
+            margin-bottom: 18px;
+        }
+
+        .join {
+            border: none;
+            background: #d946ef;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        .join:hover {
+            background: #a21caf;
+        }
+
+        /* MOBILE */
+        @media (max-width: 700px) {
+            .nav-links {
+                display: none;
+            }
+
+            .community-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <nav>
+
+        <div class="logo">
+            MySpace<span>2.0</span>
+        </div>
+
+        <div class="nav-links">
+            <a href="home.html">Home</a>
+            <a href="explore.html">Explore</a>
+            <a href="music.html">Music</a>
+            <a href="communities.html">Communities</a>
+        </div>
+
+        <div class="profile-icon">
+            S
+        </div>
+
+    </nav>
+
+
+    <!-- MAIN -->
+    <div class="container">
+
+        <div class="hero">
+
+            <h1>👥 MySpace Communities</h1>
+
+            <p>
+                Find people who share your interests,
+                join conversations and become part of a community.
+            </p>
+
+            <input
+                class="search"
+                type="text"
+                id="searchBox"
+                placeholder="🔍 Search communities..."
+                onkeyup="searchCommunities()"
+            >
+
+        </div>
+
+
+        <div class="community-grid">
+
+            <!-- COMMUNITY 1 -->
+            <div class="community">
+
+                <div class="community-icon">
+                    🎵
+                </div>
+
+                <h2>Music Lovers</h2>
+
+                <p>
+                    Share songs, discover new artists
+                    and talk about your favourite music.
+                </p>
+
+                <div class="members">
+                    24.5K members
+                </div>
+
+                <button class="join" onclick="joinCommunity(this)">
+                    Join
+                </button>
+
+            </div>
+
+
+            <!-- COMMUNITY 2 -->
+            <div class="community">
+
+                <div class="community-icon">
+                    🎨
+                </div>
+
+                <h2>Creative Minds</h2>
+
+                <p>
+                    A community for artists, designers
+                    and creative people.
+                </p>
+
+                <div class="members">
+                    18.2K members
+                </div>
+
+                <button class="join" onclick="joinCommunity(this)">
+                    Join
+                </button>
+
+            </div>
+
+
+            <!-- COMMUNITY 3 -->
+            <div class="community">
+
+                <div class="community-icon">
+                    🎬
+                </div>
+
+                <h2>Movie Fans</h2>
+
+                <p>
+                    Discuss movies, series, characters
+                    and the latest releases.
+                </p>
+
+                <div class="members">
+                    15.7K members
+                </div>
+
+                <button class="join" onclick="joinCommunity(this)">
+                    Join
+                </button>
+
+            </div>
+
+
+            <!-- COMMUNITY 4 -->
+            <div class="community">
+
+                <div class="community-icon">
+                    📸
+                </div>
+
+                <h2>Photography</h2>
+
+                <p>
+                    Share photography, editing tips
+                    and your favourite pictures.
+                </p>
+
+                <div class="members">
+                    12.8K members
+                </div>
+
+                <button class="join" onclick="joinCommunity(this)">
+                    Join
+                </button>
+
+            </div>
+
+
+            <!-- COMMUNITY 5 -->
+            <div class="community">
+
+                <div class="community-icon">
+                    🎮
+                </div>
+
+                <h2>Gaming Zone</h2>
+
+                <p>
+                    Talk about games, gaming setups,
+                    updates and esports.
+                </p>
+
+                <div class="members">
+                    21.3K members
+                </div>
+
+                <button class="join" onclick="joinCommunity(this)">
+                    Join
+                </button>
+
+            </div>
+
+
+            <!-- COMMUNITY 6 -->
+            <div class="community">
+
+                <div class="community-icon">
+                    📚
+                </div>
+
+                <h2>Book Club</h2>
+
+                <p>
+                    Discover books, share reviews
+                    and discuss your favourite stories.
+                </p>
+
+                <div class="members">
+                    9.6K members
+                </div>
+
+                <button class="join" onclick="joinCommunity(this)">
+                    Join
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- JAVASCRIPT -->
+    <script>
+
+        function joinCommunity(button) {
+
+            if (button.innerHTML === "Join") {
+
+                button.innerHTML = "Joined ✓";
+
+                button.style.background = "#9333ea";
+
+            } else {
+
+                button.innerHTML = "Join";
+
+                button.style.background = "#d946ef";
+
+            }
+        }
+
+
+        function searchCommunities() {
+
+            let search =
+                document.getElementById("searchBox")
+                .value.toLowerCase();
+
+            let communities =
+                document.querySelectorAll(".community");
+
+            communities.forEach(function(community) {
+
+                let text =
+                    community.innerText.toLowerCase();
+
+                if (text.includes(search)) {
+                    community.style.display = "";
+                } else {
+                    community.style.display = "none";
+                }
+
+            });
+        }
+
+    </script>
+
+</body>
+</html>
