@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Messages - MySpace 2.0</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #090014;
+            color: white;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            height: 70px;
+            padding: 0 6%;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            background: #10001f;
+            border-bottom: 1px solid #32104f;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #e879f9;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: #ddd;
+            text-decoration: none;
+        }
+
+        .nav-links a:hover {
+            color: #e879f9;
+        }
+
+        .profile-icon {
+            width: 40px;
+            height: 40px;
+
+            border-radius: 50%;
+
+            background:
+                linear-gradient(135deg, #9333ea, #ec4899);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-weight: bold;
+        }
+
+        /* MAIN */
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+
+            margin: 35px auto;
+        }
+
+        .title {
+            margin-bottom: 25px;
+        }
+
+        .title h1 {
+            font-size: 34px;
+            margin-bottom: 8px;
+        }
+
+        .title p {
+            color: #a78bfa;
+        }
+
+        /* MESSAGES */
+
+        .messages {
+            background: #12001f;
+            border: 1px solid #35104f;
+
+            border-radius: 18px;
+
+            overflow: hidden;
+        }
+
+        .message {
+            display: flex;
+            align-items: center;
+
+            gap: 18px;
+
+            padding: 20px;
+
+            border-bottom: 1px solid #35104f;
+
+            cursor: pointer;
+        }
+
+        .message:hover {
+            background: #1b0829;
+        }
+
+        .avatar {
+            width: 55px;
+            height: 55px;
+
+            border-radius: 50%;
+
+            background:
+                linear-gradient(135deg, #9333ea, #ec4899);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .message-info {
+            flex: 1;
+        }
+
+        .name {
+            font-weight: bold;
+            margin-bottom: 6px;
+        }
+
+        .last-message {
+            color: #999;
+            font-size: 14px;
+        }
+
+        .time {
+            color: #8b7a99;
+            font-size: 12px;
+        }
+
+        .online {
+            color: #c084fc;
+            font-size: 12px;
+            margin-top: 4px;
+        }
+
+        /* MESSAGE WINDOW */
+
+        .chat-box {
+            margin-top: 25px;
+
+            background: #12001f;
+
+            border: 1px solid #35104f;
+
+            border-radius: 18px;
+
+            padding: 25px;
+
+            display: none;
+        }
+
+        .chat-header {
+            font-size: 20px;
+            font-weight: bold;
+
+            padding-bottom: 15px;
+
+            border-bottom: 1px solid #35104f;
+        }
+
+        .chat-message {
+            margin-top: 20px;
+
+            background: #28103b;
+
+            padding: 12px 16px;
+
+            border-radius: 15px;
+
+            width: fit-content;
+
+            max-width: 70%;
+        }
+
+        .chat-input {
+            width: 100%;
+
+            margin-top: 20px;
+
+            padding: 13px;
+
+            border-radius: 25px;
+
+            border: 1px solid #6b21a8;
+
+            background: #180526;
+
+            color: white;
+
+            outline: none;
+        }
+
+        .send {
+            margin-top: 10px;
+
+            padding: 10px 20px;
+
+            border: none;
+
+            border-radius: 20px;
+
+            background: #d946ef;
+
+            color: white;
+
+            cursor: pointer;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 700px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .container {
+                width: 94%;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- NAVIGATION -->
+
+    <nav>
+
+        <div class="logo">
+            MySpace<span>2.0</span>
+        </div>
+
+        <div class="nav-links">
+
+            <a href="home.html">Home</a>
+
+            <a href="explore.html">Explore</a>
+
+            <a href="music.html">Music</a>
+
+            <a href="communities.html">Communities</a>
+
+        </div>
+
+        <div class="profile-icon">
+            S
+        </div>
+
+    </nav>
+
+
+
+    <!-- MAIN -->
+
+    <div class="container">
+
+
+        <div class="title">
+
+            <h1>💬 Messages</h1>
+
+            <p>
+                Chat with your friends and stay connected.
+            </p>
+
+        </div>
+
+
+        <!-- MESSAGE LIST -->
+
+        <div class="messages">
+
+
+            <div class="message"
+                 onclick="openChat('Alex Morgan')">
+
+                <div class="avatar">
+                    A
+                </div>
+
+                <div class="message-info">
+
+                    <div class="name">
+                        Alex Morgan
+                    </div>
+
+                    <div class="last-message">
+                        Hey! Did you listen to that new song? 🎵
+                    </div>
+
+                    <div class="online">
+                        ● Online
+                    </div>
+
+                </div>
+
+                <div class="time">
+                    10 min
+                </div>
+
+            </div>
+
+
+
+            <div class="message"
+                 onclick="openChat('Maya')">
+
+                <div class="avatar">
+                    M
+                </div>
+
+                <div class="message-info">
+
+                    <div class="name">
+                        Maya
+                    </div>
+
+                    <div class="last-message">
+                        I love your new profile theme! 💜
+                    </div>
+
+                    <div class="online">
+                        ● Online
+                    </div>
+
+                </div>
+
+                <div class="time">
+                    1 hr
+                </div>
+
+            </div>
+
+
+
+            <div class="message"
+                 onclick="openChat('Ryan')">
+
+                <div class="avatar">
+                    R
+                </div>
+
+                <div class="message-info">
+
+                    <div class="name">
+                        Ryan
+                    </div>
+
+                    <div class="last-message">
+                        Are you joining the community?
+                    </div>
+
+                </div>
+
+                <div class="time">
+                    3 hr
+                </div>
+
+            </div>
+
+
+
+            <div class="message"
+                 onclick="openChat('Jessica')">
+
+                <div class="avatar">
+                    J
+                </div>
+
+                <div class="message-info">
+
+                    <div class="name">
+                        Jessica
+                    </div>
+
+                    <div class="last-message">
+                        Check out this playlist! 🎶
+                    </div>
+
+                </div>
+
+                <div class="time">
+                    Yesterday
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- CHAT BOX -->
+
+        <div class="chat-box" id="chatBox">
+
+            <div class="chat-header" id="chatName">
+                Chat
+            </div>
+
+            <div class="chat-message">
+                Hey! 👋
+            </div>
+
+            <input
+                type="text"
+                class="chat-input"
+                id="messageInput"
+                placeholder="Type a message..."
+            >
+
+            <button
+                class="send"
+                onclick="sendMessage()"
+            >
+                Send
+            </button>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        function openChat(name) {
+
+            document.getElementById("chatBox").style.display = "block";
+
+            document.getElementById("chatName").innerHTML =
+                "💬 " + name;
+
+        }
+
+
+        function sendMessage() {
+
+            let input =
+                document.getElementById("messageInput");
+
+            if (input.value.trim() !== "") {
+
+                alert(
+                    "Message sent! 💜"
+                );
+
+                input.value = "";
+
+            }
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>
