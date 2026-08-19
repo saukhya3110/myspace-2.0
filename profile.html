@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - MySpace 2.0</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #090014;
+            color: white;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            height: 70px;
+            padding: 0 6%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #10001f;
+            border-bottom: 1px solid #32104f;
+        }
+
+        .logo {
+            font-size: 27px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #e879f9;
+        }
+
+        nav a {
+            color: #ddd;
+            text-decoration: none;
+            margin-left: 25px;
+        }
+
+        nav a:hover {
+            color: #e879f9;
+        }
+
+        /* PROFILE HEADER */
+
+        .profile-header {
+            width: 90%;
+            max-width: 1100px;
+            margin: 35px auto 0;
+            border-radius: 25px;
+            overflow: hidden;
+            background: #140021;
+            border: 1px solid #4c1d6b;
+        }
+
+        .cover {
+            height: 250px;
+            background:
+                radial-gradient(circle at 20% 30%, #9333ea, transparent 35%),
+                radial-gradient(circle at 80% 70%, #ec4899, transparent 35%),
+                linear-gradient(135deg, #18002b, #3b0764);
+        }
+
+        .profile-info {
+            padding: 0 35px 30px;
+            position: relative;
+        }
+
+        .profile-picture {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #9333ea, #ec4899);
+            border: 6px solid #140021;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 50px;
+            position: relative;
+            margin-top: -65px;
+        }
+
+        .profile-name {
+            margin-top: 15px;
+            font-size: 30px;
+        }
+
+        .username {
+            color: #a78bfa;
+            margin-top: 5px;
+        }
+
+        .bio {
+            margin-top: 18px;
+            color: #ccc;
+            max-width: 650px;
+            line-height: 1.6;
+        }
+
+        .profile-buttons {
+            position: absolute;
+            right: 35px;
+            top: 35px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .edit-btn,
+        .share-btn {
+            padding: 11px 20px;
+            border-radius: 22px;
+            cursor: pointer;
+            color: white;
+            font-weight: bold;
+        }
+
+        .edit-btn {
+            border: none;
+            background: linear-gradient(90deg, #9333ea, #d946ef);
+        }
+
+        .share-btn {
+            border: 1px solid #6b21a8;
+            background: transparent;
+        }
+
+        /* STATS */
+
+        .stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 25px;
+        }
+
+        .stat strong {
+            font-size: 20px;
+        }
+
+        .stat span {
+            display: block;
+            color: #999;
+            font-size: 13px;
+            margin-top: 4px;
+        }
+
+        /* CONTENT */
+
+        .content {
+            width: 90%;
+            max-width: 1100px;
+            margin: 25px auto 60px;
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 25px;
+        }
+
+        .card {
+            background: #12001f;
+            border: 1px solid #35104f;
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+
+        .card h2 {
+            margin-bottom: 20px;
+        }
+
+        /* ABOUT */
+
+        .about-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 13px 0;
+            border-bottom: 1px solid #281039;
+        }
+
+        .about-row:last-child {
+            border-bottom: none;
+        }
+
+        .about-label {
+            color: #9f8aaa;
+        }
+
+        /* FRIENDS */
+
+        .friends-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .friend-card {
+            text-align: center;
+            padding: 15px;
+            background: #180526;
+            border-radius: 15px;
+        }
+
+        .friend-picture {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #7e22ce, #db2777);
+            font-size: 22px;
+        }
+
+        .friend-card p {
+            margin-top: 8px;
+            font-size: 14px;
+        }
+
+        /* MUSIC */
+
+        .music-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 12px;
+            margin-bottom: 10px;
+            background: #180526;
+            border-radius: 12px;
+        }
+
+        .music-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #9333ea, #ec4899);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .music-item p {
+            font-weight: bold;
+        }
+
+        .music-item span {
+            color: #9f8aaa;
+            font-size: 13px;
+        }
+
+        /* INTERESTS */
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tag {
+            padding: 8px 13px;
+            border-radius: 20px;
+            background: #28103b;
+            color: #d8b4fe;
+            font-size: 13px;
+        }
+
+        @media (max-width: 800px) {
+
+            .content {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-buttons {
+                position: static;
+                margin-top: 20px;
+            }
+
+            .friends-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stats {
+                gap: 20px;
+            }
+
+            nav a {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+
+    <nav>
+
+        <div class="logo">
+            MySpace<span>2.0</span>
+        </div>
+
+        <div>
+            <a href="home.html">Home</a>
+            <a href="explore.html">Explore</a>
+            <a href="music.html">Music</a>
+        </div>
+
+    </nav>
+
+
+    <!-- PROFILE HEADER -->
+
+    <section class="profile-header">
+
+        <div class="cover"></div>
+
+        <div class="profile-info">
+
+            <div class="profile-picture">
+                S
+            </div>
+
+            <h1 class="profile-name">
+                Saukhya
+            </h1>
+
+            <p class="username">
+                @saukhya
+            </p>
+
+            <p class="bio">
+                Music lover 🎵 | Creative soul ✨ |
+                Exploring new places 🌎
+                <br>
+                Welcome to my space!
+            </p>
+
+            <div class="profile-buttons">
+
+                <button class="edit-btn">
+                    ✏ Edit Profile
+                </button>
+
+                <button class="share-btn">
+                    ↗ Share
+                </button>
+
+            </div>
+
+            <div class="stats">
+
+                <div class="stat">
+                    <strong>248</strong>
+                    <span>Friends</span>
+                </div>
+
+                <div class="stat">
+                    <strong>56</strong>
+                    <span>Posts</span>
+                </div>
+
+                <div class="stat">
+                    <strong>18</strong>
+                    <span>Playlists</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTENT -->
+
+    <div class="content">
+
+        <main>
+
+            <!-- ABOUT -->
+
+            <div class="card">
+
+                <h2>About Me</h2>
+
+                <div class="about-row">
+                    <span class="about-label">Location</span>
+                    <span>Mumbai, India</span>
+                </div>
+
+                <div class="about-row">
+                    <span class="about-label">Joined</span>
+                    <span>August 2026</span>
+                </div>
+
+                <div class="about-row">
+                    <span class="about-label">Favourite Genre</span>
+                    <span>Pop & Indie</span>
+                </div>
+
+                <div class="about-row">
+                    <span class="about-label">Currently Listening</span>
+                    <span>Midnight Dreams 🎵</span>
+                </div>
+
+            </div>
+
+
+            <!-- FRIENDS -->
+
+            <div class="card">
+
+                <h2>Friends</h2>
+
+                <div class="friends-grid">
+
+                    <div class="friend-card">
+                        <div class="friend-picture">A</div>
+                        <p>Alex</p>
+                    </div>
+
+                    <div class="friend-card">
+                        <div class="friend-picture">M</div>
+                        <p>Maya</p>
+                    </div>
+
+                    <div class="friend-card">
+                        <div class="friend-picture">R</div>
+                        <p>Ryan</p>
+                    </div>
+
+                    <div class="friend-card">
+                        <div class="friend-picture">J</div>
+                        <p>Jessica</p>
+                    </div>
+
+                    <div class="friend-card">
+                        <div class="friend-picture">K</div>
+                        <p>Karan</p>
+                    </div>
+
+                    <div class="friend-card">
+                        <div class="friend-picture">N</div>
+                        <p>Nina</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </main>
+
+
+        <!-- RIGHT SIDE -->
+
+        <aside>
+
+            <!-- MUSIC -->
+
+            <div class="card">
+
+                <h2>🎵 My Music</h2>
+
+                <div class="music-item">
+
+                    <div class="music-icon">♫</div>
+
+                    <div>
+                        <p>Midnight Dreams</p>
+                        <span>MySpace Artist</span>
+                    </div>
+
+                </div>
+
+                <div class="music-item">
+
+                    <div class="music-icon">♫</div>
+
+                    <div>
+                        <p>Neon Lights</p>
+                        <span>Indie Waves</span>
+                    </div>
+
+                </div>
+
+                <div class="music-item">
+
+                    <div class="music-icon">♫</div>
+
+                    <div>
+                        <p>Summer Nights</p>
+                        <span>Dream Pop</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- INTERESTS -->
+
+            <div class="card">
+
+                <h2>Interests</h2>
+
+                <div class="tags">
+
+                    <span class="tag">🎵 Music</span>
+                    <span class="tag">📸 Photography</span>
+                    <span class="tag">🎬 Movies</span>
+                    <span class="tag">✈ Travel</span>
+                    <span class="tag">🎨 Art</span>
+                    <span class="tag">💻 Technology</span>
+
+                </div>
+
+            </div>
+
+        </aside>
+
+    </div>
+
+</body>
+</html>
