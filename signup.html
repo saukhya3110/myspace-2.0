@@ -134,7 +134,7 @@
             Create your own space.
         </p>
 
-        <form>
+        <form id="signupForm">
 
             <div class="form-group">
                 <label>Full Name</label>
@@ -177,6 +177,36 @@
         </a>
 
     </div>
+<script>
+    document.getElementById("signupForm").addEventListener("submit", function(event) {
 
+        event.preventDefault();
+
+        const inputs = document.querySelectorAll("input");
+
+        const name = inputs[0].value;
+        const username = inputs[1].value;
+        const email = inputs[2].value;
+        const password = inputs[3].value;
+        const confirmPassword = inputs[4].value;
+
+        if (password !== confirmPassword) {
+            alert("Passwords do not match!");
+            return;
+        }
+
+        localStorage.setItem("myspaceName", name);
+        localStorage.setItem("myspaceUsername", username);
+        localStorage.setItem("myspaceEmail", email);
+        localStorage.setItem("myspacePassword", password);
+
+        localStorage.setItem("loggedIn", "true");
+
+        alert("Account created successfully! 🎉");
+
+        window.location.href = "home.html";
+
+    });
+</script>
 </body>
 </html>
