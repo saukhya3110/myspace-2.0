@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Settings - MySpace 2.0</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #090014;
+            color: white;
+        }
+
+        nav {
+            height: 70px;
+            padding: 0 6%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #10001f;
+            border-bottom: 1px solid #32104f;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #e879f9;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: #ddd;
+            text-decoration: none;
+        }
+
+        .nav-links a:hover {
+            color: #e879f9;
+        }
+
+        .profile-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #9333ea, #ec4899);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 900px;
+            margin: 35px auto;
+        }
+
+        .title {
+            margin-bottom: 25px;
+        }
+
+        .title h1 {
+            font-size: 34px;
+            margin-bottom: 8px;
+        }
+
+        .title p {
+            color: #a78bfa;
+        }
+
+        .settings-box {
+            background: #12001f;
+            border: 1px solid #35104f;
+            border-radius: 18px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+
+        .settings-box h2 {
+            margin-bottom: 20px;
+        }
+
+        .setting {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+            border-bottom: 1px solid #35104f;
+        }
+
+        .setting:last-child {
+            border-bottom: none;
+        }
+
+        .setting-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .setting-description {
+            color: #8b7a99;
+            font-size: 13px;
+        }
+
+        .button {
+            border: none;
+            background: #d946ef;
+            color: white;
+            padding: 9px 18px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background: #a21caf;
+        }
+
+        .danger {
+            background: #7f1d1d;
+        }
+
+        .danger:hover {
+            background: #991b1b;
+        }
+
+        @media (max-width: 700px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .setting {
+                gap: 15px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+
+    <nav>
+
+        <div class="logo">
+            MySpace<span>2.0</span>
+        </div>
+
+        <div class="nav-links">
+
+            <a href="home.html">Home</a>
+
+            <a href="explore.html">Explore</a>
+
+            <a href="music.html">Music</a>
+
+            <a href="communities.html">Communities</a>
+
+        </div>
+
+        <div class="profile-icon">
+            S
+        </div>
+
+    </nav>
+
+
+    <!-- MAIN -->
+
+    <div class="container">
+
+        <div class="title">
+
+            <h1>⚙️ Settings</h1>
+
+            <p>
+                Manage your MySpace account and preferences.
+            </p>
+
+        </div>
+
+
+        <!-- ACCOUNT -->
+
+        <div class="settings-box">
+
+            <h2>👤 Account</h2>
+
+            <div class="setting">
+
+                <div>
+                    <div class="setting-name">
+                        Username
+                    </div>
+
+                    <div class="setting-description">
+                        @saukhya
+                    </div>
+                </div>
+
+                <button class="button"
+                        onclick="editSetting('Username')">
+                    Edit
+                </button>
+
+            </div>
+
+
+            <div class="setting">
+
+                <div>
+                    <div class="setting-name">
+                        Email
+                    </div>
+
+                    <div class="setting-description">
+                        Your registered email
+                    </div>
+                </div>
+
+                <button class="button"
+                        onclick="editSetting('Email')">
+                    Edit
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRIVACY -->
+
+        <div class="settings-box">
+
+            <h2>🔒 Privacy</h2>
+
+            <div class="setting">
+
+                <div>
+                    <div class="setting-name">
+                        Profile Visibility
+                    </div>
+
+                    <div class="setting-description">
+                        Control who can see your profile.
+                    </div>
+                </div>
+
+                <button class="button"
+                        onclick="toggleSetting(this)">
+                    Public
+                </button>
+
+            </div>
+
+
+            <div class="setting">
+
+                <div>
+                    <div class="setting-name">
+                        Online Status
+                    </div>
+
+                    <div class="setting-description">
+                        Show when you are online.
+                    </div>
+                </div>
+
+                <button class="button"
+                        onclick="toggleSetting(this)">
+                    On
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- NOTIFICATIONS -->
+
+        <div class="settings-box">
+
+            <h2>🔔 Notifications</h2>
+
+            <div class="setting">
+
+                <div>
+                    <div class="setting-name">
+                        Push Notifications
+                    </div>
+
+                    <div class="setting-description">
+                        Receive notifications about activity.
+                    </div>
+                </div>
+
+                <button class="button"
+                        onclick="toggleSetting(this)">
+                    On
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- DANGER -->
+
+        <div class="settings-box">
+
+            <h2>🚪 Account</h2>
+
+            <div class="setting">
+
+                <div>
+                    <div class="setting-name">
+                        Log Out
+                    </div>
+
+                    <div class="setting-description">
+                        Log out of your MySpace account.
+                    </div>
+                </div>
+
+                <button class="button danger"
+                        onclick="logout()">
+                    Log Out
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        function toggleSetting(button) {
+
+            if (button.innerHTML === "On") {
+
+                button.innerHTML = "Off";
+
+            } else if (button.innerHTML === "Off") {
+
+                button.innerHTML = "On";
+
+            } else if (button.innerHTML === "Public") {
+
+                button.innerHTML = "Private";
+
+            } else {
+
+                button.innerHTML = "Public";
+
+            }
+
+        }
+
+
+        function editSetting(name) {
+
+            let value = prompt(
+                "Enter your new " + name + ":"
+            );
+
+            if (value) {
+
+                alert(
+                    name + " updated successfully! ✓"
+                );
+
+            }
+
+        }
+
+
+        function logout() {
+
+            alert(
+                "You have been logged out! 👋"
+            );
+
+            window.location.href = "index.html";
+
+        }
+
+    </script>
+
+</body>
+
+</html>
