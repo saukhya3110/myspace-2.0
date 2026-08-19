@@ -1,0 +1,1067 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Music - MySpace 2.0</title>
+
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+
+        body {
+            background: #090014;
+            color: white;
+        }
+
+
+        /* NAVBAR */
+
+        nav {
+            height: 70px;
+            padding: 0 6%;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            background: #10001f;
+
+            border-bottom: 1px solid #32104f;
+
+            position: sticky;
+            top: 0;
+
+            z-index: 10;
+        }
+
+
+        .logo {
+            font-size: 26px;
+            font-weight: bold;
+        }
+
+
+        .logo span {
+            color: #e879f9;
+        }
+
+
+        .search {
+            width: 280px;
+
+            padding: 11px 18px;
+
+            border-radius: 25px;
+
+            border: 1px solid #4c1d6b;
+
+            background: #180526;
+
+            color: white;
+
+            outline: none;
+        }
+
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+
+        .nav-links a {
+            color: #ddd;
+            text-decoration: none;
+        }
+
+
+        .nav-links a:hover {
+            color: #e879f9;
+        }
+
+
+        .profile-icon {
+
+            width: 40px;
+            height: 40px;
+
+            border-radius: 50%;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #9333ea,
+                    #ec4899
+                );
+
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+
+            font-weight: bold;
+        }
+
+
+
+        /* MAIN */
+
+        .container {
+
+            width: 90%;
+            max-width: 1200px;
+
+            margin: 30px auto;
+        }
+
+
+
+        /* HERO */
+
+        .music-hero {
+
+            padding: 35px;
+
+            border-radius: 20px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #301052,
+                    #4a103e
+                );
+
+            border: 1px solid #6b21a8;
+
+            margin-bottom: 25px;
+        }
+
+
+        .music-hero h1 {
+
+            font-size: 32px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .music-hero p {
+
+            color: #d8b4fe;
+
+            font-size: 16px;
+        }
+
+
+
+        /* NOW PLAYING */
+
+        .now-playing {
+
+            background: #12001f;
+
+            border: 1px solid #35104f;
+
+            border-radius: 18px;
+
+            padding: 25px;
+
+            display: grid;
+
+            grid-template-columns: 220px 1fr;
+
+            gap: 25px;
+
+            margin-bottom: 25px;
+        }
+
+
+        .album-cover {
+
+            height: 220px;
+
+            border-radius: 18px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #7e22ce,
+                    #ec4899
+                );
+
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+
+            font-size: 75px;
+        }
+
+
+        .song-info {
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+        }
+
+
+        .song-info h2 {
+
+            font-size: 28px;
+
+            margin-bottom: 8px;
+        }
+
+
+        .artist {
+
+            color: #a78bfa;
+
+            margin-bottom: 25px;
+        }
+
+
+        /* PROGRESS */
+
+        .progress {
+
+            width: 100%;
+
+            height: 6px;
+
+            background: #35104f;
+
+            border-radius: 10px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .progress-bar {
+
+            width: 45%;
+
+            height: 6px;
+
+            background: #d946ef;
+
+            border-radius: 10px;
+        }
+
+
+        .time {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            color: #8b7a99;
+
+            font-size: 12px;
+
+            margin-bottom: 20px;
+        }
+
+
+        /* PLAYER BUTTONS */
+
+        .controls {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+        }
+
+
+        .control {
+
+            width: 42px;
+            height: 42px;
+
+            border-radius: 50%;
+
+            border: none;
+
+            background: #28103b;
+
+            color: white;
+
+            cursor: pointer;
+
+            font-size: 16px;
+        }
+
+
+        .control:hover {
+
+            background: #54206f;
+        }
+
+
+        .play-button {
+
+            width: 55px;
+            height: 55px;
+
+            border-radius: 50%;
+
+            border: none;
+
+            background: #d946ef;
+
+            color: white;
+
+            cursor: pointer;
+
+            font-size: 20px;
+        }
+
+
+        .play-button:hover {
+
+            background: #a21caf;
+        }
+
+
+
+        /* SECTIONS */
+
+        .section {
+
+            background: #12001f;
+
+            border: 1px solid #35104f;
+
+            border-radius: 18px;
+
+            padding: 25px;
+
+            margin-bottom: 25px;
+        }
+
+
+        .section h2 {
+
+            margin-bottom: 20px;
+        }
+
+
+
+        /* SONG LIST */
+
+        .song {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+
+            padding: 15px;
+
+            border-radius: 12px;
+
+            margin-bottom: 10px;
+
+            background: #180526;
+        }
+
+
+        .song:hover {
+
+            background: #28103b;
+        }
+
+
+        .song-cover {
+
+            width: 55px;
+            height: 55px;
+
+            border-radius: 10px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #9333ea,
+                    #ec4899
+                );
+
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+
+            font-size: 22px;
+        }
+
+
+        .song-details {
+
+            flex: 1;
+        }
+
+
+        .song-title {
+
+            font-weight: bold;
+
+            margin-bottom: 5px;
+        }
+
+
+        .song-artist {
+
+            color: #8b7a99;
+
+            font-size: 13px;
+        }
+
+
+        .song-play {
+
+            width: 38px;
+            height: 38px;
+
+            border-radius: 50%;
+
+            border: none;
+
+            background: #d946ef;
+
+            color: white;
+
+            cursor: pointer;
+        }
+
+
+        /* PLAYLISTS */
+
+        .playlists {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 20px;
+        }
+
+
+        .playlist {
+
+            background: #180526;
+
+            border: 1px solid #35104f;
+
+            border-radius: 15px;
+
+            padding: 15px;
+
+            cursor: pointer;
+        }
+
+
+        .playlist:hover {
+
+            border-color: #d946ef;
+        }
+
+
+        .playlist-cover {
+
+            height: 150px;
+
+            border-radius: 12px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #7e22ce,
+                    #ec4899
+                );
+
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+
+            font-size: 50px;
+
+            margin-bottom: 12px;
+        }
+
+
+        .playlist h3 {
+
+            margin-bottom: 5px;
+        }
+
+
+        .playlist p {
+
+            color: #8b7a99;
+
+            font-size: 13px;
+        }
+
+
+
+        /* ARTISTS */
+
+        .artists {
+
+            display: flex;
+
+            gap: 25px;
+
+            overflow-x: auto;
+        }
+
+
+        .artist-card {
+
+            min-width: 120px;
+
+            text-align: center;
+        }
+
+
+        .artist-avatar {
+
+            width: 100px;
+            height: 100px;
+
+            margin: auto;
+
+            border-radius: 50%;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #9333ea,
+                    #ec4899
+                );
+
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+
+            font-size: 30px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .artist-card p {
+
+            color: #ccc;
+        }
+
+
+
+        /* MOBILE */
+
+        @media (max-width: 800px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .search {
+                width: 180px;
+            }
+
+            .now-playing {
+
+                grid-template-columns: 1fr;
+
+            }
+
+            .album-cover {
+
+                height: 250px;
+            }
+
+            .playlists {
+
+                grid-template-columns: 1fr;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+
+<body>
+
+
+    <!-- NAVIGATION -->
+
+    <nav>
+
+        <div class="logo">
+
+            MySpace<span>2.0</span>
+
+        </div>
+
+
+        <input
+            class="search"
+            type="text"
+            placeholder="🔍 Search MySpace..."
+        >
+
+
+        <div class="nav-links">
+
+            <a href="home.html">
+                Home
+            </a>
+
+            <a href="explore.html">
+                Explore
+            </a>
+
+            <a href="music.html">
+                Music
+            </a>
+
+            <a href="communities.html">
+                Communities
+            </a>
+
+        </div>
+
+
+        <div class="profile-icon">
+
+            S
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- MAIN -->
+
+    <div class="container">
+
+
+        <!-- HERO -->
+
+        <div class="music-hero">
+
+            <h1>
+                🎵 Your Music Space
+            </h1>
+
+            <p>
+                Discover music, create playlists
+                and share your favorite songs.
+            </p>
+
+        </div>
+
+
+
+        <!-- NOW PLAYING -->
+
+        <div class="now-playing">
+
+
+            <div class="album-cover">
+
+                🎵
+
+            </div>
+
+
+            <div class="song-info">
+
+                <h2>
+                    Midnight Dreams
+                </h2>
+
+                <div class="artist">
+                    MySpace Artist
+                </div>
+
+
+                <div class="progress">
+
+                    <div class="progress-bar"></div>
+
+                </div>
+
+
+                <div class="time">
+
+                    <span>
+                        1:32
+                    </span>
+
+                    <span>
+                        3:45
+                    </span>
+
+                </div>
+
+
+                <div class="controls">
+
+                    <button
+                        class="control"
+                        onclick="previousSong()"
+                    >
+                        ⏮
+                    </button>
+
+
+                    <button
+                        class="play-button"
+                        id="mainPlay"
+                        onclick="playMusic()"
+                    >
+                        ▶
+                    </button>
+
+
+                    <button
+                        class="control"
+                        onclick="nextSong()"
+                    >
+                        ⏭
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- RECENTLY PLAYED -->
+
+        <div class="section">
+
+            <h2>
+                🕐 Recently Played
+            </h2>
+
+
+            <div class="song">
+
+                <div class="song-cover">
+                    🎵
+                </div>
+
+                <div class="song-details">
+
+                    <div class="song-title">
+                        Midnight Dreams
+                    </div>
+
+                    <div class="song-artist">
+                        MySpace Artist
+                    </div>
+
+                </div>
+
+                <button
+                    class="song-play"
+                    onclick="playSong('Midnight Dreams')"
+                >
+                    ▶
+                </button>
+
+            </div>
+
+
+            <div class="song">
+
+                <div class="song-cover">
+                    🌙
+                </div>
+
+                <div class="song-details">
+
+                    <div class="song-title">
+                        Neon Lights
+                    </div>
+
+                    <div class="song-artist">
+                        Digital Hearts
+                    </div>
+
+                </div>
+
+                <button
+                    class="song-play"
+                    onclick="playSong('Neon Lights')"
+                >
+                    ▶
+                </button>
+
+            </div>
+
+
+            <div class="song">
+
+                <div class="song-cover">
+                    💜
+                </div>
+
+                <div class="song-details">
+
+                    <div class="song-title">
+                        Afterglow
+                    </div>
+
+                    <div class="song-artist">
+                        Luna
+                    </div>
+
+                </div>
+
+                <button
+                    class="song-play"
+                    onclick="playSong('Afterglow')"
+                >
+                    ▶
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- PLAYLISTS -->
+
+        <div class="section">
+
+            <h2>
+                📀 My Playlists
+            </h2>
+
+
+            <div class="playlists">
+
+
+                <div class="playlist">
+
+                    <div class="playlist-cover">
+                        💜
+                    </div>
+
+                    <h3>
+                        My Favorites
+                    </h3>
+
+                    <p>
+                        24 songs
+                    </p>
+
+                </div>
+
+
+                <div class="playlist">
+
+                    <div class="playlist-cover">
+                        🌙
+                    </div>
+
+                    <h3>
+                        Late Night Vibes
+                    </h3>
+
+                    <p>
+                        18 songs
+                    </p>
+
+                </div>
+
+
+                <div class="playlist">
+
+                    <div class="playlist-cover">
+                        ✨
+                    </div>
+
+                    <h3>
+                        Good Mood
+                    </h3>
+
+                    <p>
+                        32 songs
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+
+        <!-- FAVORITE ARTISTS -->
+
+        <div class="section">
+
+            <h2>
+                🎤 Favorite Artists
+            </h2>
+
+
+            <div class="artists">
+
+
+                <div class="artist-card">
+
+                    <div class="artist-avatar">
+                        A
+                    </div>
+
+                    <p>
+                        Artist One
+                    </p>
+
+                </div>
+
+
+                <div class="artist-card">
+
+                    <div class="artist-avatar">
+                        L
+                    </div>
+
+                    <p>
+                        Luna
+                    </p>
+
+                </div>
+
+
+                <div class="artist-card">
+
+                    <div class="artist-avatar">
+                        D
+                    </div>
+
+                    <p>
+                        Digital Hearts
+                    </p>
+
+                </div>
+
+
+                <div class="artist-card">
+
+                    <div class="artist-avatar">
+                        M
+                    </div>
+
+                    <p>
+                        MySpace Artist
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+
+        function playMusic() {
+
+            let button =
+                document.getElementById("mainPlay");
+
+
+            if (button.innerHTML === "▶") {
+
+                button.innerHTML = "⏸";
+
+                alert(
+                    "Now playing: Midnight Dreams 🎵"
+                );
+
+            } else {
+
+                button.innerHTML = "▶";
+
+            }
+
+        }
+
+
+        function playSong(song) {
+
+            alert(
+                "Now playing: " + song + " 🎵"
+            );
+
+        }
+
+
+        function previousSong() {
+
+            alert(
+                "Previous song ⏮"
+            );
+
+        }
+
+
+        function nextSong() {
+
+            alert(
+                "Next song ⏭"
+            );
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>
+```
